@@ -27,7 +27,10 @@ jobs:
                            libwxbase3.0-dev \
                            libcurl4-openssl-dev \
                            libwxgtk* \
-                           liblua5.4-dev
+                           liblua5.4-dev \
+                           gettext \
+                           libfmt-dev \
+                           libgtest-dev
       - name: Generate build files
         run: |
           mkdir build && cd build
