@@ -26,6 +26,7 @@ jobs:
                            libwxsqlite3-3.0-dev \
                            libwxbase3.0-dev \
                            libwxgtk-media3.0-gtk3-dev \
+                           libwxgtk3.0-gtk3-dev \
                            curl \
                            libcurl4-openssl-dev
       - name: Generate build files
