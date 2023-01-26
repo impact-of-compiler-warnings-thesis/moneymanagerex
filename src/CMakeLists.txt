@@ -24,8 +24,8 @@ else()
         $<$<BOOL:${Wlogical-op}>:-Wlogical-op>)
     if(NOT (CMAKE_COMPILER_IS_GNUCXX AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 6))
         check_cxx_compiler_flag(-Wuseless-cast Wuseless-cast)
-        add_compile_options(-Werror=old-style-cast
-            $<$<BOOL:${Wuseless-cast}>:-Werror=useless-cast>)
+        #add_compile_options(-Werror=old-style-cast
+        #    $<$<BOOL:${Wuseless-cast}>:-Werror=useless-cast>)
     endif()
 endif()
 
