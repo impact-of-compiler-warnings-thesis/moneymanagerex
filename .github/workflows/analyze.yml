@@ -37,7 +37,7 @@ jobs:
           mkdir build && cd build
           cmake .. -GNinja \
                    -DCMAKE_BUILD_TYPE=Debug \
-                   -DCMAKE_CXX_FLAGS="$(wx-config --cppflags)"
+                   -DCMAKE_CXX_FLAGS="$(wx-config --cppflags) $(wx-config --libs)"
       - name: Run build-wrapper
         run: |
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} ninja -C build
