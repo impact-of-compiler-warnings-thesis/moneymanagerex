@@ -22,16 +22,42 @@ jobs:
         run: |
           sudo apt update
           sudo apt install ninja-build \
+                           clang \
                            rapidjson-dev \
                            sqlite3 \
-                           libwxsqlite3-3.0-dev \
-                           libwxbase3.0-dev \
                            libcurl4-openssl-dev \
-                           libwxgtk* \
-                           liblua5.4-dev \
                            gettext \
                            libfmt-dev \
-                           libgtest-dev
+                           libgtest-dev \
+                           libssl-dev \
+                           gettext \
+                           lsb-release \
+                           file \
+                           ccache \
+                           libgtk-3-dev \
+                           liblua5.3-dev \
+                           libwebkit2gtk-4.0-dev \
+                           unzip
+      - name: Enable Clang
+        run: |
+          sudo update-alternatives --set cc /usr/bin/clang
+          sudo update-alternatives --set c++ /usr/bin/clang++
+      - name: Build wxWidgets 3.1.7
+        run: |
+          wget https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.7/wxWidgets-3.1.7.zip
+          unzip -d wxWidgets wxWidgets-*.zip
+          rm wxWidgets-*.zip
+          cd wxWidgets
+          mkdir build && cd build
+          ../configure --disable-shared \
+                       --enable-cxx11 \
+                       --with-cxx=11 \
+                       --enable-webview \
+                       --with-gtk=3 \
+                       --enable-unicode \
+                       --enable-intl
+          make -j$(nproc)
+          sudo make install
       - name: Generate build files
         run: |
           mkdir build && cd build
