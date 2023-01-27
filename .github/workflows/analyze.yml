@@ -48,14 +48,13 @@ jobs:
           unzip -d wxWidgets wxWidgets-*.zip
           rm wxWidgets-*.zip
           cd wxWidgets
-          mkdir build && cd build
-          ../configure --disable-shared \
-                       --enable-cxx11 \
-                       --with-cxx=11 \
-                       --enable-webview \
-                       --with-gtk=3 \
-                       --enable-unicode \
-                       --enable-intl
+          configure --disable-shared \
+                    --enable-cxx11 \
+                    --with-cxx=11 \
+                    --enable-webview \
+                    --with-gtk=3 \
+                    --enable-unicode \
+                    --enable-intl
           make -j$(nproc)
           sudo make install
       - name: Generate build files
